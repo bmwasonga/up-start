@@ -10,7 +10,6 @@ import {
   Center,
   Heading,
   Box,
-  Container,
 } from '@chakra-ui/react';
 import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import ContainerComponent from '../Components/ContainerComponent';
@@ -22,11 +21,25 @@ export default function Signup() {
 
   const router = useRouter();
 
-  async function handleSubmit(e) {}
+  const GITHUB_LOGIN = `${process.env.NEXT_PUBLIC_NHOST_BACKEND}/auth/providers/github`;
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      await auth.register(email, password, {
+        display_name: displayName,
+      });
+    } catch (error) {
+      return elert('registration failed');
+    }
+
+    router.push('/login');
+  }
 
   return (
     <div>
-      <Container>
+      <ContainerComponent>
         <Heading as="h1" textAlign="center">
           Register
         </Heading>
@@ -35,9 +48,9 @@ export default function Signup() {
             <Input
               type="text"
               value={displayName}
-              onchange={handleSubmit((e) => {
+              onchange={(e) => {
                 setName(e.target.value);
-              })}
+              }}
               placeholder="name"
               autoFocus
               mt={[2, 4]}
@@ -45,9 +58,9 @@ export default function Signup() {
             <Input
               type="email"
               value={email}
-              onchange={handleSubmit((e) => {
+              onchange={(e) => {
                 setEmail(e.target.value);
-              })}
+              }}
               placeholder="Email"
               autoFocus
               mt={[2, 4]}
@@ -55,9 +68,9 @@ export default function Signup() {
             <Input
               type="password"
               value={password}
-              onchange={handleSubmit((e) => {
+              onchange={(e) => {
                 setPassword(e.target.value);
-              })}
+              }}
               placeholder="Password"
               autoFocus
               mt={[2, 4]}
@@ -92,7 +105,12 @@ export default function Signup() {
               Google
             </Button>
 
-            <Button aria-label="Github Login" leftIcon={<FaGithub />}>
+            <Button
+              as="a"
+              href={GITHUB_LOGIN}
+              aria-label="Github Login"
+              leftIcon={<FaGithub />}
+            >
               {' '}
               Github
             </Button>
@@ -103,7 +121,7 @@ export default function Signup() {
             </Button>
           </Stack>
         </Center>
-      </Container>
+      </ContainerComponent>
     </div>
   );
 }

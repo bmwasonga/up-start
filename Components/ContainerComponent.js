@@ -27,33 +27,33 @@ export default function ContainerComponent({ children }) {
           p={8}
           mt={[0, 8]}
           mb={8}
-          mx={aut0}
+          mx="auto"
         >
-          {!signed && (
+          {!signedIn && (
             <Box>
               <NextLink href="/">
-                <Button as="a" varriant="ghost" p={[1, 4]}>
+                <Button as="a" variant="ghost" p={[1, 4]}>
                   Home
                 </Button>
               </NextLink>
 
               <NextLink href="/login">
-                <Button as="a" varriant="ghost" p={[1, 4]}>
+                <Button as="a" variant="ghost" p={[1, 4]}>
                   Login
                 </Button>
               </NextLink>
 
               <NextLink href="/signup">
-                <Button as="a" varriant="ghost" p={[1, 4]}>
+                <Button as="a" variant="ghost" p={[1, 4]}>
                   Sign Up
                 </Button>
               </NextLink>
             </Box>
           )}
-          {signed && (
+          {signedIn && (
             <Box>
               <NextLink href="/">
-                <Button as="a" varriant="ghost" p={[1, 4]}>
+                <Button as="a" variant="ghost" p={[1, 4]}>
                   Home
                 </Button>
               </NextLink>
