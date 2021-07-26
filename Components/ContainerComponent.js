@@ -59,13 +59,13 @@ export default function ContainerComponent({ children }) {
               </NextLink>
 
               <NextLink href="/create">
-                <Button as="a" varriant="ghost" p={[1, 4]}>
+                <Button as="a" variant="ghost" p={[1, 4]}>
                   Create Question
                 </Button>
               </NextLink>
 
               <NextLink href="/quiz">
-                <Button as="a" varriant="ghost" p={[1, 4]}>
+                <Button as="a" variant="ghost" p={[1, 4]}>
                   Take a quiz
                 </Button>
               </NextLink>

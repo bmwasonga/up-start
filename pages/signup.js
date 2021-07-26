@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { auth } from '../utils/nhost';
+import Link from 'next/link';
 
 import {
   Text,
@@ -27,11 +28,13 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      await auth.register(email, password, {
-        display_name: displayName,
+      auth.register({
+        email,
+        password,
+        options: { userData: { display_name: displayName } },
       });
     } catch (error) {
-      return elert('registration failed');
+      return alert('registration failed');
     }
 
     router.push('/login');
@@ -48,8 +51,8 @@ export default function Signup() {
             <Input
               type="text"
               value={displayName}
-              onchange={(e) => {
-                setName(e.target.value);
+              onChange={(e) => {
+                setDisplayName(e.target.value);
               }}
               placeholder="name"
               autoFocus
@@ -58,7 +61,7 @@ export default function Signup() {
             <Input
               type="email"
               value={email}
-              onchange={(e) => {
+              onChange={(e) => {
                 setEmail(e.target.value);
               }}
               placeholder="Email"
@@ -68,7 +71,7 @@ export default function Signup() {
             <Input
               type="password"
               value={password}
-              onchange={(e) => {
+              onChange={(e) => {
                 setPassword(e.target.value);
               }}
               placeholder="Password"
@@ -121,6 +124,10 @@ export default function Signup() {
             </Button>
           </Stack>
         </Center>
+        <Text mt={4} textAlign="center">
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
+          Already registred? <Link href="/signup">Click here</Link>
+        </Text>
       </ContainerComponent>
     </div>
   );
