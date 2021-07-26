@@ -3,8 +3,8 @@ import { useAuth } from '@nhost/react-auth';
 import { Text } from '@chakra-ui/react';
 
 export function AuthGate({ children }) {
-  const { signedIn } = useAuth();
   const router = useRouter();
+  const { signedIn } = useAuth();
 
   if (signedIn === null) {
     return <Text>Checking Authentication</Text>;
@@ -17,5 +17,3 @@ export function AuthGate({ children }) {
 
   return children;
 }
-
-// add useRouter or see its usability. modified this page from the documentation
