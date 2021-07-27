@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { auth } from '../utils/nhost';
 import Link from 'next/link';
+import { GoogleLogin } from 'react-google-login';
 
 import {
   Text,
@@ -23,6 +24,7 @@ export default function Signup() {
   const router = useRouter();
 
   const GITHUB_LOGIN = `${process.env.NEXT_PUBLIC_NHOST_BACKEND}/auth/providers/github`;
+  const GOOGLE_LOGIN = process.env.NEXT_PUBLIC_NHOST_GOOGLE;
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -103,7 +105,13 @@ export default function Signup() {
         </Center>
         <Center>
           <Stack isInline ml={4} mt={6} spacing={8} alignContent="center">
-            <Button aria-label="Google Login" leftIcon={<FaGoogle />}>
+            <Button
+              as="a"
+              href={GOOGLE_LOGIN}
+              aria-label="Google Login"
+              leftIcon={<FaGoogle />}
+              cookiePolicy="single_host_origin"
+            >
               {' '}
               Google
             </Button>
