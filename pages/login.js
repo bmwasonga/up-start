@@ -111,7 +111,7 @@ export default function Login() {
         </Center>
         <Text mt={4} textAlign="center">
           {/* eslint-disable-next-line react/no-unescaped-entities */}
-          Don't have an account? <Link href="/signup">Click here</Link>
+          Don't have an account?
         </Text>
       </ContainerComponent>
     </div>
