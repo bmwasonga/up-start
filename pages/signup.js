@@ -24,7 +24,7 @@ export default function Signup() {
   const router = useRouter();
 
   const GITHUB_LOGIN = `${process.env.NEXT_PUBLIC_NHOST_BACKEND}/auth/providers/github`;
-  const GOOGLE_LOGIN = process.env.NEXT_PUBLIC_NHOST_GOOGLE;
+  const GOOGLE_LOGIN = 'process.env.NEXT_PUBLIC_NHOST_GOOGLE;';
 
   async function handleSubmit(e) {
     e.preventDefault();

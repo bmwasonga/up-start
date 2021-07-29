@@ -28,6 +28,8 @@ export default function Login() {
 
     try {
       await auth.login({ email, password });
+
+      console.log('the data gotten is', email, password);
     } catch (error) {
       return alert('Login failed');
     }
