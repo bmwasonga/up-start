@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PrivateRoute } from '../Components/privateRoute';
+import { AuthGuard } from '../Components/privateRoute';
 
 import { CREATE_NEW_QUESTION } from '../utils/api';
 import { useMutation } from '@apollo/client';
@@ -189,4 +189,4 @@ function CreateQuestion() {
 }
 
 // export default CreateQuestion;
-export default PrivateRoute(CreateQuestion);
+export default AuthGuard(CreateQuestion);
